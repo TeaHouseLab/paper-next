@@ -3,3 +3,26 @@ layout: default
 title: Blog
 permalink: /pages/blog
 ---
+<div class="container">
+    {% for post in site.posts %}
+    {% if post.hidden != true %}
+    <article class="no-padding round">
+        {% if post.cover %}
+        <img src="{{ post.cover }}" class="responsive small top-round" />
+</div>
+{% endif %}
+<div class="padding">
+    <h5 class="no-margin">{{ post.title }}</h5>
+    <div>{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} •
+        {{ post.meta }}{% endif %}</p>
+        <br>
+        <p>{{ post.content | strip_html | truncatewords: 20}}
+    </div>
+    <nav>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="button round">View</a>
+    </nav>
+</div>
+</article>
+{% endif %}
+{% endfor %}
+</div>
